@@ -10,8 +10,9 @@ class Solution {
             while (l < r) {
                 if (str[l] != str[r])
                     return false ;
-                l++ , r-- ;
+                l++ ;
+                r-- ;
             }
-            return true ; 
+            return true  ; 
         }
     };
