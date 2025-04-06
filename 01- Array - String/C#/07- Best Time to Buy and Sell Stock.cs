@@ -5,7 +5,7 @@ public class Solution {
     
             for (int i = 1 ; i < prices.Length ; i++) {
                 profit = Math.Max(profit , prices[i] - buy);
-                buy = min(buy , prices[i]);
+                buy = Math.Min(buy , prices[i]);
             }
             return profit ;
     }
