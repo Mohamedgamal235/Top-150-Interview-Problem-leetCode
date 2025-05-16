@@ -22,3 +22,35 @@ public:
         return solve(0 , nums.size(), nums);
     }
 };
+
+
+/// ------------------------------------------------------------------
+// Another Solution 
+
+class Solution {
+public:
+    int dp[2500+1];
+    int solve(int i ,vector<int>& nums) {
+        if (i == nums.size())
+            return 0;
+
+        int &res = dp[i];
+        if (~res)
+            return res ;
+
+        res = 1 ; 
+        for (int j = i + 1 ; j < nums.size() ; j++)
+            if (nums[j] > nums[i])
+                res = max(res , 1 + solve(j , nums));
+
+        return res ;
+    }
+
+    int lengthOfLIS(vector<int>& nums) {
+        memset(dp , -1 , sizeof dp);
+        int maxLen = 0 ;
+        for (int i = 0 ; i < nums.size() ; i++)
+            maxLen = max(maxLen , solve(i , nums));
+        return maxLen;
+    }
+};
